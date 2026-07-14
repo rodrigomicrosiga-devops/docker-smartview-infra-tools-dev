@@ -1,4 +1,4 @@
-name: Docker Build & Push Infra Tools to Docker Hub
+name: Docker Build & Push AppServer Worker to Docker Hub
 
 on:
   push:
@@ -11,12 +11,11 @@ on:
 
 jobs:
   build-and-push:
-    name: Build and Push Infra Tools Image on Local Infrastructure
-    # 🔑 Utiliza o seu Runner Local para execução rápida na sua infraestrutura
+    name: Build and Push AppServer Worker Image on Local Infrastructure
     runs-on: self-hosted
 
     steps:
-      - name: Checkout do Código
+      - name: Checkout do Codigo
         uses: actions/checkout@v4
 
       - name: Log in to Docker Hub

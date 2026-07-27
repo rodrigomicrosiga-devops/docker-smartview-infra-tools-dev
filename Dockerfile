@@ -24,3 +24,9 @@ ENV PATH="$PATH:/opt/mssql-tools18/bin"
 
 # Define o diretório de trabalho padrão dentro do container
 WORKDIR /opt/smartview_init
+
+# Usuário não-root: esta imagem só roda psql/sqlcmd (ferramentas de cliente),
+# sem escutar porta nem precisar de nenhum privilégio.
+RUN groupadd -r smartview-init && useradd -r -g smartview-init smartview-init \
+    && chown -R smartview-init:smartview-init /opt/smartview_init
+USER smartview-init

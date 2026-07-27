@@ -56,4 +56,12 @@ Esta imagem é consumida de forma automática pelo repositório principal `docke
 ./run.sh mssql smartview
 ```
 
+### 🏷️ Rastreabilidade de Build
+
+A tag da imagem publicada permanece fixa (`1.0`) entre builds. Para rastrear qual commit gerou um build específico sem depender da tag, o `pipeline` grava o label `org.opencontainers.image.revision` com o SHA do commit em toda imagem publicada:
+
+```bash
+docker inspect --format '{{ index .Config.Labels "org.opencontainers.image.revision" }}' rodrigomicrosiga/smartview-infra-tools-dev:1.0
+```
+
 
